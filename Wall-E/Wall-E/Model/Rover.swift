@@ -8,11 +8,11 @@
 import Foundation
 
 class Rover {
+    
     let name: String
     let landingDate: String
     let missionEndDate: String
     let totalPhotos: Int
-    
     
     enum Keys: String {
         case name
@@ -20,7 +20,6 @@ class Rover {
         case missionEndDate = "max_date"
         case totalPhotos    = "total_photos"
     }
-    
     
     init?(roverDictionary: [String : Any]) {
         guard let name           = roverDictionary[Keys.name.rawValue] as? String,

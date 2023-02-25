@@ -13,7 +13,6 @@ class RoverVC: UIViewController {
     @IBOutlet weak var roverTableView: UITableView!
     
     
-    
     //MARK: - PROPERTIES
     let roverNames = ["Curiosity", "Spirit", "Opportunity"]
     
@@ -22,7 +21,6 @@ class RoverVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         roverTableView.dataSource = self
-   
     }
 
 
@@ -46,6 +44,7 @@ extension RoverVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return roverNames.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = roverTableView.dequeueReusableCell(withIdentifier: "roverCell", for: indexPath) as? RoverTableViewCell else { return UITableViewCell() }

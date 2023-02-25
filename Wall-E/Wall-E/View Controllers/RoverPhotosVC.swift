@@ -21,12 +21,12 @@ class RoverPhotosVC: UIViewController {
     
     
     //MARK: - PROPERTIES
+    var photos: [Photo] = []
     var roverNameReciever: String? {
         didSet {
             updateUI()
         }
     }
-    var photos: [Photo] = []
     
     
     //MARK: - LIFECYCLE
@@ -42,10 +42,9 @@ class RoverPhotosVC: UIViewController {
     //MARK: - ACTIIONS
     @IBAction func searchPhotosButtonTapped(_ sender: Any) {
         photos.removeAll()
-        fetchPhotos()
+        fetchPhotoMetaData()
     }
     
-//  The UI needs active dates limits from the Rovers because the photo dates may not overlap. Is there a way to set this in the date picker?
     
     //MARK: - FUNCTIONS
     func updateUI() {
@@ -53,7 +52,7 @@ class RoverPhotosVC: UIViewController {
         DispatchQueue.main.async {
             self.roverBackgroundImageView.image         = UIImage(named: roverNameReceiver)
             self.roverNameLabel.text                    = "Mars Rover: \(roverNameReceiver)"
-            self.instructionsLabel.text                 = "Please select a day within the Misson dates to view photos from Wall-E's friend: \(roverNameReceiver)"
+            self.instructionsLabel.text                 = "Select a date within the Misson scope to view pics from Wall-E's friend: \(roverNameReceiver)"
         }
     }
     
@@ -64,6 +63,7 @@ class RoverPhotosVC: UIViewController {
         missionDatePicker.layer.masksToBounds  = true
 
     }
+    
     
     func fetchRoverInfo() {
         guard let roverNameReceiver = roverNameReciever else { return }
@@ -88,10 +88,11 @@ class RoverPhotosVC: UIViewController {
         }
     }
     
-    func fetchPhotos() {
+    
+    func fetchPhotoMetaData() {
         let onDate = missionDatePicker.date.asString()
         guard let rover = roverNameReciever else { return }
-        PhotoController.fetchPhotos(forRover: rover, onDate: onDate) { photos in
+        PhotoController.fetchPhotoMetaData(forRover: rover, onDate: onDate) { photos in
             guard let photos = photos else { return }
             self.photos = photos
             DispatchQueue.main.async {
@@ -109,14 +110,17 @@ extension RoverPhotosVC: UITableViewDataSource, UITableViewDelegate {
         return photos.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = roverPhotoTableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath) as? RoverPhotoTableViewCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
         
         let index = photos[indexPath.row]
         cell.updateUI(forPhoto: index)
         
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(photos[indexPath.row].photoPath)

@@ -19,22 +19,14 @@ class RoverPhotoTableViewCell: UITableViewCell {
     func updateUI(forPhoto photo: Photo) {
         cameraNameLabel.text = photo.cameraName
         photoIDLabel.text    = "Photo ID: \(photo.id)"
-        if let imageURL = URL(string: photo.photoPath) {
-            photoImageView.loadFromURL(url: imageURL)
-        }
+        fetchPhoto(forPhoto: photo)
     }
-}
-
-//MARK: - EXT: UIImageView
-extension UIImageView {
-    func loadFromURL(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
+    
+    
+    func fetchPhoto(forPhoto photo: Photo) {
+        PhotoController.fetchPhoto(fromPhoto: photo) { photo in
+            DispatchQueue.main.async {
+                self.photoImageView.image = photo
             }
         }
     }
