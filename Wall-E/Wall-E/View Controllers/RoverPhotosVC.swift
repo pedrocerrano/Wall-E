@@ -39,6 +39,7 @@ class RoverPhotosVC: UIViewController {
         
     }
     
+//  The UI needs active dates limits from the Rovers because the photo dates may not overlap. Is there a way to set this in the date picker?
     
     //MARK: - FUNCTIONS
     func updateUI() {
