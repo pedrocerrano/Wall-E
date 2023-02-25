@@ -17,6 +17,7 @@
 		29576B3F29AA6B2A008A8244 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29576B3E29AA6B2A008A8244 /* Rover.swift */; };
 		29576B4129AA7BF0008A8244 /* RoverPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29576B4029AA7BF0008A8244 /* RoverPhotoTableViewCell.swift */; };
 		29576B4329AA8309008A8244 /* RoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29576B4229AA8309008A8244 /* RoverController.swift */; };
+		29576B4529AA9BFB008A8244 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29576B4429AA9BFB008A8244 /* PhotoController.swift */; };
 		29CA119A29A9660000B8A469 /* RoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA119929A9660000B8A469 /* RoverVC.swift */; };
 		29CA119D29A96BF400B8A469 /* RoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA119C29A96BF400B8A469 /* RoverTableViewCell.swift */; };
 		29CA119F29A96F5800B8A469 /* RoverPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA119E29A96F5800B8A469 /* RoverPhotosVC.swift */; };
@@ -35,6 +36,7 @@
 		29576B3E29AA6B2A008A8244 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		29576B4029AA7BF0008A8244 /* RoverPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotoTableViewCell.swift; sourceTree = "<group>"; };
 		29576B4229AA8309008A8244 /* RoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverController.swift; sourceTree = "<group>"; };
+		29576B4429AA9BFB008A8244 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		29CA119929A9660000B8A469 /* RoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverVC.swift; sourceTree = "<group>"; };
 		29CA119C29A96BF400B8A469 /* RoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverTableViewCell.swift; sourceTree = "<group>"; };
 		29CA119E29A96F5800B8A469 /* RoverPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotosVC.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				29576B4229AA8309008A8244 /* RoverController.swift */,
+				29576B4429AA9BFB008A8244 /* PhotoController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				291ED9E629A93D6000D04E25 /* AppDelegate.swift in Sources */,
 				291ED9E829A93D6000D04E25 /* SceneDelegate.swift in Sources */,
 				29CA119F29A96F5800B8A469 /* RoverPhotosVC.swift in Sources */,
+				29576B4529AA9BFB008A8244 /* PhotoController.swift in Sources */,
 				29576B3F29AA6B2A008A8244 /* Rover.swift in Sources */,
 				29576B4129AA7BF0008A8244 /* RoverPhotoTableViewCell.swift in Sources */,
 				291ED9FF29A93E0D00D04E25 /* Constants.swift in Sources */,

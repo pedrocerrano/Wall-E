@@ -14,6 +14,7 @@ class RoverPhotosVC: UIViewController {
     @IBOutlet weak var roverNameLabel: UILabel!
     @IBOutlet weak var activeFromLabel: UILabel!
     @IBOutlet weak var activeUntilLabel: UILabel!
+    @IBOutlet weak var totalPhotosLabel: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var missionDatePicker: UIDatePicker!
     @IBOutlet weak var roverPhotoTableView: UITableView!
@@ -31,6 +32,7 @@ class RoverPhotosVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         roverPhotoTableView.dataSource = self
+        fetchRoverInfo()
     }
     
     
@@ -45,12 +47,30 @@ class RoverPhotosVC: UIViewController {
     func updateUI() {
         guard let roverNameReceiver = roverNameReciever else { return }
         DispatchQueue.main.async {
-            self.roverNameLabel.text                    = "Mars Rover: \(roverNameReceiver)"
             self.roverBackgroundImageView.image         = UIImage(named: roverNameReceiver)
+            self.roverNameLabel.text                    = "Mars Rover: \(roverNameReceiver)"
             self.instructionsLabel.text                 = "Please select a day within the Misson dates to view photos from Wall-E's friend: \(roverNameReceiver)"
             self.missionDatePicker.backgroundColor      = .systemTeal
             self.missionDatePicker.layer.cornerRadius   = 4
             self.missionDatePicker.layer.masksToBounds  = true
+//            print("\n \(self.missionDatePicker.date)\n")
+        }
+        
+    }
+    
+    func fetchRoverInfo() {
+        guard let roverNameReceiver = roverNameReciever else { return }
+        RoverController.fetchRoverInfo(withName: roverNameReceiver) { roversArray in
+            guard let rovers = roversArray else { return }
+            for rover in rovers {
+                if rover.name == roverNameReceiver {
+                    DispatchQueue.main.async {
+                        self.totalPhotosLabel.text  = "\(rover.totalPhotos) total photos taken"
+                        self.activeFromLabel.text   = "\(rover.landingDate): Landing Date"
+                        self.activeUntilLabel.text  = "\(rover.missionEndDate): Mission End"
+                    }
+                }
+            }
         }
     }
 }
