@@ -14,6 +14,7 @@
 		291ED9F229A93D6200D04E25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 291ED9F029A93D6200D04E25 /* LaunchScreen.storyboard */; };
 		291ED9FF29A93E0D00D04E25 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291ED9FE29A93E0D00D04E25 /* Constants.swift */; };
 		291EDA0129A9416600D04E25 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291EDA0029A9416600D04E25 /* Photo.swift */; };
+		29576B3F29AA6B2A008A8244 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29576B3E29AA6B2A008A8244 /* Rover.swift */; };
 		29CA119A29A9660000B8A469 /* RoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA119929A9660000B8A469 /* RoverVC.swift */; };
 		29CA119D29A96BF400B8A469 /* RoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA119C29A96BF400B8A469 /* RoverTableViewCell.swift */; };
 		29CA119F29A96F5800B8A469 /* RoverDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA119E29A96F5800B8A469 /* RoverDetailVC.swift */; };
@@ -29,6 +30,7 @@
 		291ED9F329A93D6200D04E25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		291ED9FE29A93E0D00D04E25 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		291EDA0029A9416600D04E25 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		29576B3E29AA6B2A008A8244 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		29CA119929A9660000B8A469 /* RoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverVC.swift; sourceTree = "<group>"; };
 		29CA119C29A96BF400B8A469 /* RoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverTableViewCell.swift; sourceTree = "<group>"; };
 		29CA119E29A96F5800B8A469 /* RoverDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverDetailVC.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		291ED9FD29A93DE400D04E25 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				29576B3E29AA6B2A008A8244 /* Rover.swift */,
 				291EDA0029A9416600D04E25 /* Photo.swift */,
 			);
 			path = Model;
@@ -202,6 +205,7 @@
 				291ED9E629A93D6000D04E25 /* AppDelegate.swift in Sources */,
 				291ED9E829A93D6000D04E25 /* SceneDelegate.swift in Sources */,
 				29CA119F29A96F5800B8A469 /* RoverDetailVC.swift in Sources */,
+				29576B3F29AA6B2A008A8244 /* Rover.swift in Sources */,
 				291ED9FF29A93E0D00D04E25 /* Constants.swift in Sources */,
 				29CA119D29A96BF400B8A469 /* RoverTableViewCell.swift in Sources */,
 				29CA119A29A9660000B8A469 /* RoverVC.swift in Sources */,

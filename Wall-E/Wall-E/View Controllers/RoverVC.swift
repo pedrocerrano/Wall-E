@@ -13,30 +13,46 @@ class RoverVC: UIViewController {
     @IBOutlet weak var roverTableView: UITableView!
     
     
+    
+    //MARK: - PROPERTIES
+    let roverNames = ["Curiosity", "Spirit", "Opportunity"]
+    
+    
     //MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         roverTableView.dataSource = self
-        roverTableView.delegate = self
+   
     }
 
 
     // MARK: - NAVIGATION
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if segue.identifier == "toRoverDetailVC" {
+            if let index = roverTableView.indexPathForSelectedRow {
+                if let destinationVC = segue.destination as? RoverDetailVC {
+                    let rover = roverNames[index.row]
+                    destinationVC.roverNameReciever = rover
+                }
+            }
+        }
     }
 }
 
 
-extension RoverVC: UITableViewDataSource, UITableViewDelegate {
+//MARK: - EXT: TableViewDataSource
+extension RoverVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return roverNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = roverTableView.dequeueReusableCell(withIdentifier: "roverCell", for: indexPath) as? RoverTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
+        
+        let rover = roverNames[indexPath.row]
+        cell.updateUI(rover: rover)
         
         return cell
     }
