@@ -28,9 +28,9 @@ class RoverVC: UIViewController {
 
     // MARK: - NAVIGATION
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toRoverDetailVC" {
+        if segue.identifier == "toRoverPhotosVC" {
             if let index = roverTableView.indexPathForSelectedRow {
-                if let destinationVC = segue.destination as? RoverDetailVC {
+                if let destinationVC = segue.destination as? RoverPhotosVC {
                     let rover = roverNames[index.row]
                     destinationVC.roverNameReciever = rover
                 }
