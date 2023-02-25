@@ -16,6 +16,7 @@ class RoverPhotosVC: UIViewController {
     @IBOutlet weak var activeUntilLabel: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var missionDatePicker: UIDatePicker!
+    @IBOutlet weak var roverPhotoTableView: UITableView!
     
     
     //MARK: - PROPERTIES
@@ -29,7 +30,7 @@ class RoverPhotosVC: UIViewController {
     //MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        roverPhotoTableView.dataSource = self
     }
     
     
@@ -54,3 +55,18 @@ class RoverPhotosVC: UIViewController {
 }
 
 
+//MARK: - EXT: TableViewDataSource
+extension RoverPhotosVC: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = roverPhotoTableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath) as? RoverPhotoTableViewCell else { return UITableViewCell() }
+        
+        cell.updateUI()
+        
+        return cell
+    }
+}

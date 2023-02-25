@@ -171,27 +171,27 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="photoCell" id="cRr-Oh-KeX" customClass="RoverPhotoTableViewCell" customModule="Wall_E" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="80.333335876464844"/>
+                                        <rect key="frame" x="0.0" y="50" width="353" height="84.333335876464844"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cRr-Oh-KeX" id="b56-QU-TVV">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="80.333335876464844"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="84.333335876464844"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="93b-F7-JTy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="80.333333333333329"/>
+                                                    <rect key="frame" x="0.0" y="2" width="353" height="80.333333333333329"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cqR-uy-AfX">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="cqR-uy-AfX">
                                                             <rect key="frame" x="0.0" y="0.0" width="264.66666666666669" height="80.333333333333329"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="(camera name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCp-f9-4Ol">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="264.66666666666669" height="36.333333333333336"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="115.33333333333333" height="45.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(sol date)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXv-Cy-13j">
-                                                                    <rect key="frame" x="0.0" y="44.333333333333336" width="264.66666666666669" height="36.000000000000007"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <rect key="frame" x="0.0" y="45.333333333333336" width="58" height="35.000000000000007"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -210,13 +210,15 @@
                                             <constraints>
                                                 <constraint firstItem="93b-F7-JTy" firstAttribute="leading" secondItem="b56-QU-TVV" secondAttribute="leading" id="AFb-1N-n4r"/>
                                                 <constraint firstAttribute="trailing" secondItem="93b-F7-JTy" secondAttribute="trailing" id="Cog-V7-4Js"/>
-                                                <constraint firstAttribute="bottom" secondItem="93b-F7-JTy" secondAttribute="bottom" id="ax1-xA-YCh"/>
-                                                <constraint firstItem="93b-F7-JTy" firstAttribute="top" secondItem="b56-QU-TVV" secondAttribute="top" id="sRS-i7-5w4"/>
+                                                <constraint firstAttribute="bottom" secondItem="93b-F7-JTy" secondAttribute="bottom" constant="2" id="ax1-xA-YCh"/>
+                                                <constraint firstItem="93b-F7-JTy" firstAttribute="top" secondItem="b56-QU-TVV" secondAttribute="top" constant="2" id="sRS-i7-5w4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="cameraNameLabel" destination="OCp-f9-4Ol" id="9Qp-74-wap"/>
                                             <outlet property="photoImageView" destination="RB0-bH-HAo" id="XDz-XI-2P6"/>
+                                            <outlet property="photoSolLabel" destination="vXv-Cy-13j" id="ZZX-ol-ttD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -279,6 +281,7 @@
                         <outlet property="missionDatePicker" destination="XqO-bW-kt3" id="ntu-Di-O2u"/>
                         <outlet property="roverBackgroundImageView" destination="WAH-iq-t95" id="Yvv-bn-6sw"/>
                         <outlet property="roverNameLabel" destination="8gF-Vs-HvH" id="bcJ-If-hmc"/>
+                        <outlet property="roverPhotoTableView" destination="uGe-pl-j64" id="pjt-jm-rRx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2RR-EK-M7w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
