@@ -26,19 +26,23 @@ class RoverPhotosVC: UIViewController {
             updateUI()
         }
     }
+    var photos: [Photo] = []
     
     
     //MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         roverPhotoTableView.dataSource = self
+        roverPhotoTableView.delegate = self
+        configureDatePicker()
         fetchRoverInfo()
     }
     
     
     //MARK: - ACTIIONS
     @IBAction func searchPhotosButtonTapped(_ sender: Any) {
-        
+        photos.removeAll()
+        fetchPhotos()
     }
     
 //  The UI needs active dates limits from the Rovers because the photo dates may not overlap. Is there a way to set this in the date picker?
@@ -50,12 +54,15 @@ class RoverPhotosVC: UIViewController {
             self.roverBackgroundImageView.image         = UIImage(named: roverNameReceiver)
             self.roverNameLabel.text                    = "Mars Rover: \(roverNameReceiver)"
             self.instructionsLabel.text                 = "Please select a day within the Misson dates to view photos from Wall-E's friend: \(roverNameReceiver)"
-            self.missionDatePicker.backgroundColor      = .systemTeal
-            self.missionDatePicker.layer.cornerRadius   = 4
-            self.missionDatePicker.layer.masksToBounds  = true
-//            print("\n \(self.missionDatePicker.date)\n")
         }
-        
+    }
+    
+    
+    func configureDatePicker() {
+        missionDatePicker.backgroundColor      = .systemTeal
+        missionDatePicker.layer.cornerRadius   = 4
+        missionDatePicker.layer.masksToBounds  = true
+
     }
     
     func fetchRoverInfo() {
@@ -68,8 +75,27 @@ class RoverPhotosVC: UIViewController {
                         self.totalPhotosLabel.text  = "\(rover.totalPhotos) total photos taken"
                         self.activeFromLabel.text   = "\(rover.landingDate): Landing Date"
                         self.activeUntilLabel.text  = "\(rover.missionEndDate): Mission End"
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        let stringToMinDate = dateFormatter.date(from: rover.landingDate)
+                        let stringToMaxDate = dateFormatter.date(from: rover.missionEndDate)
+                        self.missionDatePicker.minimumDate = stringToMinDate
+                        self.missionDatePicker.maximumDate = stringToMaxDate
                     }
                 }
+            }
+        }
+    }
+    
+    func fetchPhotos() {
+        let onDate = missionDatePicker.date.asString()
+        guard let rover = roverNameReciever else { return }
+        PhotoController.fetchPhotos(forRover: rover, onDate: onDate) { photos in
+            guard let photos = photos else { return }
+            self.photos = photos
+            DispatchQueue.main.async {
+                self.roverPhotoTableView.reloadData()
             }
         }
     }
@@ -77,17 +103,22 @@ class RoverPhotosVC: UIViewController {
 
 
 //MARK: - EXT: TableViewDataSource
-extension RoverPhotosVC: UITableViewDataSource {
+extension RoverPhotosVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return photos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = roverPhotoTableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath) as? RoverPhotoTableViewCell else { return UITableViewCell() }
         
-        cell.updateUI()
+        let index = photos[indexPath.row]
+        cell.updateUI(forPhoto: index)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(photos[indexPath.row].photoPath)
     }
 }

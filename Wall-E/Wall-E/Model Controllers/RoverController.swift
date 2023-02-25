@@ -11,10 +11,10 @@ class RoverController {
     
     static func fetchRoverInfo(withName: String, completion: @escaping ([Rover]?) -> Void) {
         
-        guard let baseURL         = URL(string: Constants.RoverURLs.roverBaseURL) else { completion(nil) ; return }
+        guard let baseURL         = URL(string: Constants.RoverPhotosURL.roverBaseURL) else { completion(nil) ; return }
         var urlComponents         = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         
-        let apiQuery              = URLQueryItem(name: Constants.RoverURLs.apiKeyKey, value: Constants.RoverURLs.apiKeyValue)
+        let apiQuery              = URLQueryItem(name: Constants.RoverPhotosURL.apiKeyKey, value: Constants.RoverPhotosURL.apiKeyValue)
         urlComponents?.queryItems = [apiQuery]
         guard let finalURL = urlComponents?.url else { completion(nil) ; return }
         print("Final Rover Info URL: \(finalURL)")
@@ -40,6 +40,7 @@ class RoverController {
                 }
             } catch {
                 print("Unable to retreive Rover Info data: \(error.localizedDescription)")
+                completion(nil)
             }
         }.resume()
     }

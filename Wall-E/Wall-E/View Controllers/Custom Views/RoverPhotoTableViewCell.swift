@@ -12,14 +12,30 @@ class RoverPhotoTableViewCell: UITableViewCell {
     //MARK: - OUTLETS
     @IBOutlet weak var cameraNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var photoSolLabel: UILabel!
+    @IBOutlet weak var photoIDLabel: UILabel!
     
     
     //MARK: - FUNCTIONS
-    func updateUI() {
-        cameraNameLabel.text = "(placeholder)"
-        photoImageView.image = UIImage(named: "Wall-E")
-        photoSolLabel.text   = "SOL date taken: 832"
+    func updateUI(forPhoto photo: Photo) {
+        cameraNameLabel.text = photo.cameraName
+        photoIDLabel.text    = "Photo ID: \(photo.id)"
+        if let imageURL = URL(string: photo.photoPath) {
+            photoImageView.loadFromURL(url: imageURL)
+        }
     }
-    
+}
+
+//MARK: - EXT: UIImageView
+extension UIImageView {
+    func loadFromURL(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }
