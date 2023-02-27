@@ -73,8 +73,8 @@ class RoverPhotosVC: UIViewController {
                 if rover.name == roverNameReceiver {
                     DispatchQueue.main.async {
                         self.totalPhotosLabel.text  = "\(rover.totalPhotos) total photos taken"
-                        self.activeFromLabel.text   = "\(rover.landingDate): Landing Date"
-                        self.activeUntilLabel.text  = "\(rover.missionEndDate): Mission End"
+                        self.activeFromLabel.text   = "\(rover.landingDate) : Landing Date"
+                        self.activeUntilLabel.text  = "\(rover.missionEndDate) : Mission End"
                         
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd"
