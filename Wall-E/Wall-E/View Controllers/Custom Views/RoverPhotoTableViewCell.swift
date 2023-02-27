@@ -18,7 +18,7 @@ class RoverPhotoTableViewCell: UITableViewCell {
     //MARK: - FUNCTIONS
     func updateUI(forPhoto photo: Photo) {
         cameraNameLabel.text = photo.cameraName
-        photoIDLabel.text    = "Photo ID: \(photo.id)"
+        photoIDLabel.text    = "ID: \(photo.id)"
         fetchPhoto(forPhoto: photo)
     }
     
